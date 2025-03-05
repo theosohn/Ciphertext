@@ -6,11 +6,11 @@ export class GameState {
     constructor (phraseList, randomize = true, dictList=[], wrongList=[], lettersList=[]) {
         this.c = new Cipher(phraseList, randomize, dictList, wrongList, lettersList);
         for (let i = 0; i < phraseList.length; i++) {
-            this.round(this.c.phraseList[i], this.c.cipherList[i], this.c.dictList[i], this.c.wrongList[i]);
+            GameState.round(this.c.phraseList[i], this.c.cipherList[i], this.c.dictList[i], this.c.wrongList[i]);
         }
     }
 
-    round(phrase, cipher, dict, wrong) {
+    static round(phrase, cipher, dict, wrong) {
         let attempt = [-1];
         while (!arrayEquals(attempt, wrong)) {
             console.log('The original string is: ' + phrase);
